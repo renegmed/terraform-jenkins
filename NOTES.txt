@@ -1,0 +1,54 @@
+Status: Working
+
+Setting up Jenkins using terraform
+
+1.  $ terraform init 
+
+2.  $ make keys
+
+3.  $ make apply 
+
+This created jenkins machine (Jenkins-Server) but not yet 
+the apps machine ("aws_instance" "app-instance"  count=0).
+
+$ ssh -i mykey ubuntu@3.238.18.126
+
+# ls -als /var/lib/jenkins
+
+# sudo -s 
+
+# ps aux | grep jenkins 
+
+# cat /var/log/cloud-init-output.log
+
+# cat /var/log/jenkins/jenkins.log
+
+
+
+Open Jenkins browser ( refer to resource "aws_security_group" "jenkins-securitygroup")
+
+http://3.238.18.126:8080
+
+# cat /var/lib/jenkins/secrets/initialAdminPassword
+
+Github personal access key
+
+5a3c6a7bf3084da2f5043b793f0803ff44ba94ad
+
+
+
+
+
+$> ssh -i kuber-key-pair.pem ec2-user@xx.xxx.xxx.xxx 
+
+------------------------------------------------------
+WARNING: UNPROTECTED PRVATE  KEY FILE!
+--------------------------------------
+Permissions 0644 for '....../kuber-key-pair.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+.... 
+
+Solution:
+  Make user read only 
+
+chmod 400 ..../kuber-key-pair.pem 
